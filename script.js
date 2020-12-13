@@ -5,6 +5,7 @@ var upCase = ["Q", "W", "E", "R", "T", "Y", "Y", "U", "I", "O", "P", "A", "S", "
 var numCase = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var symCase = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "\\", "|", ";", ":", "'", '"', ",", "<", ".", ">", "/", "?"]
 var pickCase = [];
+var chooseLength = 0
 var randLength = 0
 // Write password to the #password input
 // function writePassword() {
@@ -22,36 +23,45 @@ var randLength = 0
 // console.log(pickCase);
 
 
-
-
-      // Lowercase
+// length 8-128
+chooseLength = prompt("How long would you like your password to be?\nYou may pick between 8-128 characters.");
+if (chooseLength >= 8 && chooseLength <= 128) {
+  alert("good");
+  // Lowercase
   if (confirm("Would you like your password to contain lowercase characters?")) {
     pickCase = lowCase;
     randLength = randLength + 26;
   }
-      // Uppercase
-  if (confirm("Would you like your password to contain uppercase characters?")){
+  // Uppercase
+  if (confirm("Would you like your password to contain uppercase characters?")) {
     pickCase = pickCase.concat(upCase);
     randLength = randLength + 26;
   }
-      // Numbers
-  if (confirm("Would you like your password to contain numbers?")){
+  // Numbers
+  if (confirm("Would you like your password to contain numbers?")) {
     pickCase = pickCase.concat(numCase);
     randLength = randLength + 10;
   }
-      // Symbols
-  if (confirm("Would you like your password to contain symbols?")){
+  // Symbols
+  if (confirm("Would you like your password to contain symbols?")) {
     pickCase = pickCase.concat(symCase);
     randLength = randLength + 32;
   }
-      // in the event no characters were picked
-  if (randLength === 0){
+  // in the event no characters were picked
+  if (randLength === 0) {
     alert("you must choose at least one character type.");
   }
+}
+else {
+  alert("you must pick a number between 8-128");
+}
+
+
 
 
 
 console.log(pickCase)
-console.log(randLength);
+console.log("randLength " + randLength);
+console.log("chooseLength " + chooseLength);
 // // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
